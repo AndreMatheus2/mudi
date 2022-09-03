@@ -23,6 +23,9 @@ public class PedidoController {
 
     @PostMapping("novo")
     public String novo(RequisicaoNovoPedido requisicao){
+        if(requisicao.getNomeProduto().isEmpty() || requisicao.getUrlProduto().isEmpty() || requisicao.getUrlImagem().isEmpty()){
+            return "pedido/formulario";
+        }
         Pedido pedido = requisicao.toPedido();
         pedidoRepository.save(pedido);
         return "pedido/formulario";
