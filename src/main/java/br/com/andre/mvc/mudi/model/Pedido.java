@@ -25,6 +25,8 @@ public class Pedido {
     @JsonIgnore
     private User user;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
+    @JsonIgnore
+
     private List<Oferta> ofertas;
 
     public User getUser() {
